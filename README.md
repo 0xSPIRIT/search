@@ -2,5 +2,5 @@
 
 Usage: search.exe <search pattern> <files you want to search in>
 
-Example: search test *.c *.h
-Example: search "this is a test" *.txt
+Example: `search test *.c *.h`\
+Example: `search "this is a test" *.txt`
