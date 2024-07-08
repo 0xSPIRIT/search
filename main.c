@@ -156,7 +156,7 @@ void search_data_for_key(const char *file_name, char *buffer, size_t buffer_size
 void get_directory_and_file_from_filepath(const char *filepath, char *directory, char *file) {
     int slash_index = 0;
     for (slash_index = (int)strlen(filepath)-1;
-         slash_index >= 0 && filepath[slash_index] != '/';
+         slash_index >= 0 && filepath[slash_index] != '/' && filepath[slash_index] != '\\';
          slash_index--);
 
     // No slash found?
