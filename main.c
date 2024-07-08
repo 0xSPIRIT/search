@@ -47,17 +47,15 @@ uint8_t *read_entire_file(const char *file_name, size_t *buffer_size_out) {
     return result;
 }
 
-bool compare_strings_case_insensitive(const char *a, const char *b) {
+bool string_contains_string_case_insensitive(const char *a, const char *b) {
     size_t a_length = strlen(a);
     size_t b_length = strlen(b);
 
     if (a_length < b_length) return false;
 
-    size_t iter_len = b_length;
+    if (b_length == 0) return false;
 
-    if (iter_len == 0) return false;
-
-    for (size_t i = 0; i < iter_len; i++) {
+    for (size_t i = 0; i < b_length; i++) {
         if (tolower(a[i]) != tolower(b[i]))
             return false;
     }
@@ -96,7 +94,7 @@ void search_data_for_key(const char *file_name, char *buffer, size_t buffer_size
             column++;
         }
 
-        bool found = compare_strings_case_insensitive(head, search_query);
+        bool found = string_contains_string_case_insensitive(head, search_query);
         if (found) {
             // We split the line up into before the key and after the key so we can
             // do nice color stuff
